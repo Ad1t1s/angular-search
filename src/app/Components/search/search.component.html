@@ -1,0 +1,27 @@
+<div id="content">
+  <form class="ui large form"
+        [ngClass]="searchForm.submitted ? 'search' : 'search_first'"
+        #searchForm="ngForm"
+        (ngSubmit)="searchImage(searchForm)"
+        >
+      <div class="ui huge action input">
+            <input type="text"
+            [(ngModel)]="searchTerm"
+            #firstName="ngModel"
+            name="search"
+            placeholder="What images you would like to see on Pixaby"
+            required>
+          <button class="ui primary button" type="submit">Search</button>
+      </div>
+  </form>
+  <div [class.result]='searchForm.submitted'>
+      <div class="ui three stackable cards size" >
+          <div class="card" *ngFor="let item of data">
+            <div class="image">
+                <img [src]="item.webformatURL">
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
